@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: github-manager
+spec:
+  selector:
+    matchLabels:
+      app: github-manager
+  replicas: 1 # tells deployment to run 2 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: github-manager
+    spec:
+      containers:
+      - name: github-manager
+        image: 192.168.13.131:5000/milx-cloud-api:v0
+        ports:
+        - containerPort: 5000
